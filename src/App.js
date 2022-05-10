@@ -3,13 +3,12 @@ import { useDispatch } from "react-redux";
 import "./App.css";
 import Form from "./modules/Form/Form";
 import ToDoList from "./modules/ToDoList/ToDoList";
-import { loadListActionCreator } from "./redux/features/listSlice";
-import toDoListData from "./utils/toDoListData";
+import { loadListThunk } from "./redux/thunks/toDoThunks";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadListActionCreator(toDoListData));
+    dispatch(loadListThunk());
   }, [dispatch]);
 
   return (
