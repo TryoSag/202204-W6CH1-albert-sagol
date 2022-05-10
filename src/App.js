@@ -1,23 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import ListToDo from "./components/ListToDo/ListToDo";
-import toDos from "./data/dataToDo";
-import { loadToDosActionCreator } from "./redux/slice/sliceToDo";
+import "./App.css";
+import Form from "./modules/Form/Form";
+import ToDoList from "./modules/ToDoList/ToDoList";
+import { loadListActionCreator } from "./redux/features/listSlice";
+import toDoListData from "./utils/toDoListData";
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(loadToDosActionCreator(toDos));
+    dispatch(loadListActionCreator(toDoListData));
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <>
-        <h1>To Do's</h1>
-        <ListToDo />
-      </>
-    </div>
+    <>
+      <Form />
+      <ToDoList />
+    </>
   );
 }
 
