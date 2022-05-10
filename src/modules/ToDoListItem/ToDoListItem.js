@@ -1,8 +1,6 @@
 import { useDispatch } from "react-redux";
-import {
-  markAsDoneActionCreator,
-  removeItemActionCreator,
-} from "../../redux/features/listSlice";
+import { markAsDoneActionCreator } from "../../redux/features/listSlice";
+import { removeItemThunk } from "../../redux/thunks/toDoThunks";
 
 const ToDoListItem = ({ toDoListItem: { id, name, done } }) => {
   const dispatch = useDispatch();
@@ -11,12 +9,8 @@ const ToDoListItem = ({ toDoListItem: { id, name, done } }) => {
     <>
       <p>Id: {id}</p>
       <p>{name}</p>
-      <p>
-        Done: {done && "Yes"} {!done && "No"}
-      </p>
-      <button onClick={() => dispatch(removeItemActionCreator(id))}>
-        Delete
-      </button>
+      <p>Done: {done ? "Yes" : "No"}</p>
+      <button onClick={() => dispatch(removeItemThunk(id))}>Delete</button>
       <button onClick={() => dispatch(markAsDoneActionCreator(id))}>
         Done
       </button>

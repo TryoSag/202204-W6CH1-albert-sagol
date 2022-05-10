@@ -37,6 +37,7 @@ const Form = () => {
         <input
           type="text"
           id="name"
+          autoComplete=""
           value={itemToDo.name}
           onChange={handleNameInputChange}
         />
