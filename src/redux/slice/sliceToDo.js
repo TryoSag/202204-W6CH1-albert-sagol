@@ -6,18 +6,22 @@ const sliceToDo = createSlice({
   reducers: {
     loadToDos: (toDos, action) => [...action.payload],
 
-    toogleToDos: (toDos, action) =>
+    toogleToDo: (toDos, action) =>
       toDos.map((toDo) =>
         toDo.id !== action.payload.id
           ? { ...toDo }
           : { ...toDo, done: !toDo.done }
       ),
+
+    deleteToDo: (toDos, action) =>
+      toDos.filter((toDo) => toDo.id !== action.payload.id),
   },
 });
 
 export const {
   loadToDos: loadToDosActionCreator,
-  toogleToDos: toogleToDosActionCreator,
+  toogleToDo: toogleToDosActionCreator,
+  deleteToDo: deleteToDoActionCreator,
 } = sliceToDo.actions;
 
 export default sliceToDo.reducer;
